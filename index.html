@@ -1,9 +1,154 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
 	<title>徐亚凯的博客</title>
 </head>
+<style type="text/css">
+    .overflow-hidden{
+        overflow: hidden;
+    }
+    .cube-wrap{
+        overflow: hidden;
+        position: relative;
+        transform: scale(3);
+        height: 660px;
+        width: 100%;
+    }
+    .cube-inner,.cube{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100%;
+        height: 100%;
+        transform-style: preserve-3d;
+        transform-origin: 25px 25px;
+        transform: rotateX(-33.5deg) rotateY(45deg);
+        list-style: none;
+    }
+    .cube-inner {
+        margin: -25px 0 0 -25px;
+        animation: fastspin 10s ease-in-out 2s infinite;
+    }
+    .cube-inner li {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 50px;
+        height: 50px;
+        background: radial-gradient(transparent 30%,rgba(5,17,53,.2) 100%)
+    }
+    .cube-inner li:after{
+        content: "";
+        display: block;
+        position: absolute;
+        width: 50px;
+        height: 50px;
+        backface-visibility: hidden;
+        background-color: rgba(16,58,177,.5);
+        transition: transform 1s ease-in-out;
+    }
+    .cube-inner .front{
+        transform: translateZ(25px);
+    }
+    .cube-inner .back{
+        transform: rotateX(-180deg) translateZ(25px);
+    }
+    .cube-inner .left{
+        transform: rotateY(-90deg) translateZ(25px);
+    }
+    .cube-inner .right{
+        transform: rotateY(90deg) translateZ(25px)
+    }
+    .cube-inner .bottom{
+        transform: rotateX(-90deg) translateZ(25px);
+    }
+    .cube-inner .top{
+        transform: rotateX(90deg) translateZ(25px);
+    }
+    
+    .cube{
+        animation: slowspin 10s ease-in-out infinite 2s;
+        margin: -50px 0 0 -50px;
+        transform-origin: 50px 50px;
+        animation-fill-mode : forwards 
+    }
+    .cube li {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100px;
+        height: 100px;
+        background: radial-gradient(transparent 30%,rgba(16,47,91,.2) 100%)
+    }
+    .cube li:after{
+        content: "";
+        display: block;
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        backface-visibility: hidden;
+        background-color: rgba(126,169,232,.5);
+        transition: transform 1s ease-in-out;
+    }
+    .cube .front{
+        transform: translateZ(50px);
+    }
+    .cube .back{
+        transform: rotateX(-180deg) translateZ(50px);
+    }
+    .cube .left{
+        transform: rotateY(-90deg) translateZ(50px);
+    }
+    .cube .right{
+        transform: rotateY(90deg) translateZ(50px)
+    }
+    .cube .bottom{
+        transform: rotateX(-90deg) translateZ(50px);
+    }
+    .cube .top{
+        transform: rotateX(90deg) translateZ(50px);
+    }
+
+    @keyframes slowspin {
+        0% {
+            transform: rotateX(-33.5deg) rotateY(45deg)
+        }
+
+        10%,to {
+            transform: rotateX(-33.5deg) rotateY(225deg)
+        }
+    }
+    @keyframes fastspin {
+        0% {
+            transform: rotateX(-33.5deg) rotateY(45deg)
+        }
+
+        10%,to {
+            transform: rotateX(-33.5deg) rotateY(-315deg)
+        }
+    }
+</style>
 <body>
-欢迎来到徐亚凯的博客
+<div class="overflow-hidden">
+    <div class="cube-wrap">
+    <ul class="cube-inner">
+    <li class="front"></li>
+    <li class="back"></li>
+    <li class="right"></li>
+    <li class="left"></li>
+    <li class="top"></li>
+    <li class="bottom"></li>
+    </ul>
+    <ul class="cube">
+    <li class="front"></li>
+    <li class="back"></li>
+    <li class="right"></li>
+    <li class="left"></li>
+    <li class="top"></li>
+    <li class="bottom"></li>
+    </ul>
+    </div>
+</div>
 </body>
 </html>
